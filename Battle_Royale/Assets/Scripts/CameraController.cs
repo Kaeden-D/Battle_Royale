@@ -19,12 +19,15 @@ public class CameraController : MonoBehaviour
 
     void Start()
     {
+
         // lock the cursor to the middle of the screen
         Cursor.lockState = CursorLockMode.Locked;
+
     }
 
     void LateUpdate()
     {
+
         // get the mouse movement inputs
         rotX += Input.GetAxis("Mouse X") * sensX;
         rotY += Input.GetAxis("Mouse Y") * sensY;

@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+
         Move();
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -22,6 +23,7 @@ public class PlayerController : MonoBehaviour
 
     void Move()
     {
+
         // get the input axis
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
@@ -30,10 +32,12 @@ public class PlayerController : MonoBehaviour
         dir.y = rig.linearVelocity.y;
         // set that as our velocity
         rig.linearVelocity = dir;
+
     }
 
     void TryJump()
     {
+
         // create a ray facing down
         Ray ray = new Ray(transform.position, Vector3.down);
         // shoot the raycast
@@ -41,6 +45,7 @@ public class PlayerController : MonoBehaviour
         {
             rig.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
+
     }
 
 }
