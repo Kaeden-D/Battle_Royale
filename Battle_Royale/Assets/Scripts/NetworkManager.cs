@@ -59,4 +59,21 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
     }
 
+    public override void OnDisconnected(DisconnectCause cause)
+    {
+
+        PhotonNetwork.LoadLevel("Menu");
+
+    }
+
+    public override void OnPlayerLeftRoom(Player otherPlayer)
+    {
+        GameManager.instance.alivePlayers--;
+        GameUI.instance.UpdatePlayerInfoText();
+        if (PhotonNetwork.IsMasterClient)
+        {
+            GameManager.instance.CheckWinCondition();
+        }
+    }
+
 }
