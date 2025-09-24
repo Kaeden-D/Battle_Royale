@@ -35,7 +35,8 @@ public class PlayerWeapon : MonoBehaviour
         // update the ammo UI
         GameUI.instance.UpdateAmmoText();
         // spawn the bullet
-        player.photonView.RPC("SpawnBullet", RpcTarget.All, bulletSpawnPos.transform.position, Camera.main.transform.forward);
+        Debug.Log("\n\n1 " + bulletSpawnPos.transform.position + " " + bulletSpawnPos.transform.forward);
+        player.photonView.RPC("SpawnBullet", RpcTarget.All, bulletSpawnPos.transform.position, bulletSpawnPos.transform.forward);
 
     }
 
@@ -46,8 +47,11 @@ public class PlayerWeapon : MonoBehaviour
         // get bullet script
         Bullet bulletScript = bulletPrefab.GetComponent<Bullet>();
         // initialize it and set the velocity
+        Debug.Log("\n2 " + pos + " " + dir);
         bulletScript.Initialize(damage, player.id, player.photonView.IsMine);
+        bulletScript.rig.position = pos;
         bulletScript.rig.linearVelocity = dir * bulletSpeed;
+        Debug.Log("\n3 " + bulletScript.rig.position + " " + bulletScript.rig.linearVelocity);
 
     }
 

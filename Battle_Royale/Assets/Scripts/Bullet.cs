@@ -8,12 +8,15 @@ public class Bullet : MonoBehaviour
     private bool isMine;
     public Rigidbody rig;
 
+    private Bullet test;
+
     public void Initialize(int damage, int attackerId, bool isMine)
     {
-        this.damage = damage;
-        this.attackerId = attackerId;
-        this.isMine = isMine;
-        Destroy(gameObject, 5.0f);
+        test = Instantiate(this, rig.position, rig.rotation);
+        test.damage = damage;
+        test.attackerId = attackerId;
+        test.isMine = isMine;
+        Destroy(test, 5.0f);
     }
 
     void OnTriggerEnter(Collider other)
@@ -33,7 +36,7 @@ public class Bullet : MonoBehaviour
                 
         }
 
-        DestroyImmediate(gameObject, true);
+        Destroy(test);
 
     }
 
