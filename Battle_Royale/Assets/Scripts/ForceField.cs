@@ -70,7 +70,7 @@ public class ForceField : MonoBehaviour
 
     void CheckPlayers()
     {
-        if (Time.time - lastPlayerCheckTime > 1.0f)
+        if (Time.time - lastPlayerCheckTime > 0.15f)
         {
             lastPlayerCheckTime = Time.time;
             // loop through all players

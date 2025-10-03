@@ -55,12 +55,29 @@ public class PlayerWeapon : MonoBehaviour
     }
 
     [PunRPC]
-    public void GiveAmmo(int ammoToGive)
+    public void GiveAmmo(float ammoToGive)
     {
 
-        curAmmo = Mathf.Clamp(curAmmo + ammoToGive, 0, maxAmmo);
+        curAmmo = Mathf.Clamp(curAmmo + (int)ammoToGive, 0, maxAmmo);
         // update the ammo text
         GameUI.instance.UpdateAmmoText();
+
+    }
+
+    [PunRPC]
+    public void ChangeDamage(float value)
+    {
+
+        float temp = (float)damage * value;
+        damage = (int)temp;
+
+    }
+
+    [PunRPC]
+    public void ChangeFireRate(float value)
+    {
+
+        shootRate /= value;
 
     }
 

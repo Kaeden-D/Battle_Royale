@@ -4,14 +4,18 @@ using Photon.Pun;
 public enum PickupType
 {
     Health,
-    Ammo
+    Ammo,
+    Speed,
+    Jump,
+    Damage,
+    FireRate
 }
 
 public class Pickup : MonoBehaviourPun
 {
 
     public PickupType type;
-    public int value;
+    public float value;
 
     void OnTriggerEnter(Collider other)
     {
@@ -33,6 +37,22 @@ public class Pickup : MonoBehaviourPun
             else if (type == PickupType.Ammo)
             {
                 player.photonView.RPC("GiveAmmo", player.photonPlayer, value);
+            }
+            else if (type == PickupType.Speed)
+            {
+                player.photonView.RPC("ChangeSpeed", player.photonPlayer, value);
+            }
+            else if (type == PickupType.Jump)
+            {
+                player.photonView.RPC("ChangeJump", player.photonPlayer, value);
+            }
+            else if (type == PickupType.Damage)
+            {
+                player.photonView.RPC("ChangeDamage", player.photonPlayer, value);
+            }
+            else if (type == PickupType.FireRate)
+            {
+                player.photonView.RPC("ChangeFireRate", player.photonPlayer, value);
             }
 
             // destroy the object

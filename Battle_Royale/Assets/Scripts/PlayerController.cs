@@ -176,12 +176,28 @@ public class PlayerController : MonoBehaviourPun
     }
 
     [PunRPC]
-    public void Heal(int amountToHeal)
+    public void Heal(float amountToHeal)
     {
 
-        curHp = Mathf.Clamp(curHp + amountToHeal, 0, maxHp);
+        curHp = Mathf.Clamp(curHp + (int)amountToHeal, 0, maxHp);
         // update the health bar UI
         GameUI.instance.UpdateHealthBar();
+
+    }
+
+    [PunRPC]
+    public void ChangeSpeed(float value)
+    {
+
+        moveSpeed *= value;
+
+    }
+
+    [PunRPC]
+    public void ChangeJump(float value)
+    {
+
+        jumpForce *= value;
 
     }
 

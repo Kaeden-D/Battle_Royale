@@ -50,6 +50,12 @@ MonoBehaviour:
   - GiveAmmo
   - Heal
   - DestroyPickup
+  - ChangeSpeed
+  - ChnageJump
+  - ChangeJump
+  - ChangeDamage
+  - FireRate
+  - ChangeFireRate
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1
